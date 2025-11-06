@@ -1,6 +1,6 @@
 import Header from "@/app/(site)/_componentes/header";
 
-export default function Home() {
+export default function NotFound() {
   return (
     <>
       <Header />
@@ -8,17 +8,15 @@ export default function Home() {
         <section className="flex items-center h-[80vh] p-2 sm:p-10">
           <div className="flex flex-col justify-center h-full -mt-28">
             <div className="font-bold text-xl sm:text-3xl text-emerald-200">
-              Gustavo Sales
+              Página Não Encontrada
             </div>
             <div className="font-bold text-4xl sm:text-6xl sm:leading-tight text-zinc-50">
-              Frontend Sênior
+              Ops!
               <br />
-              Especialista JavaScript
+              Parece que me perdi...
             </div>
             <div className="font-thin text-lg sm:text-xl leading-relaxed sm:leading-relaxed text-zinc-300 mt-5 sm:max-w-[50%]">
-              Desenvolvendo soluções que transcendem o comum, proporcionando
-          experiências excepcionais que simplificam e aprimoram a conexão humana
-          com a tecnologia.
+              Navegue pelo menu superior para encontrar o que você procura.
             </div>
           </div>
         </section>
