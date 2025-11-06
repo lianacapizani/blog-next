@@ -4,7 +4,8 @@ export const metadata = {
   title: {
     template: "%s | Portfólio",
     default: "Portfólio",
-  }
+  },
+  icons: {icon: "/favicon.png"},
 };
 
 export default function SiteLayout({children}) {
