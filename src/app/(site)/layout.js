@@ -1,8 +1,10 @@
 import Header from "@/app/(site)/_componentes/header";
 
 export const metadata = {
-  title: "Portfólio",
-  description: "Confira os posts do meu blog",
+  title: {
+    template: "%s | Portfólio",
+    default: "Portfólio",
+  }
 };
 
 export default function SiteLayout({children}) {

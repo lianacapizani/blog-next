@@ -7,7 +7,7 @@ export default function NotFound() {
       <main className="pt-[4.625rem]">
         <section className="flex items-center h-[80vh] p-2 sm:p-10">
           <div className="flex flex-col justify-center h-full -mt-28">
-            <div className="font-bold text-xl sm:text-3xl text-emerald-200">
+            <div className="font-bold text-xl sm:text-3xl text-fuchsia-400">
               Página Não Encontrada
             </div>
             <div className="font-bold text-4xl sm:text-6xl sm:leading-tight text-zinc-50">
