@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { listarPosts } from "./_servicos/posts-servicos";
+import { sessaoValida } from "@/app/(autenticacao)/_servicos/autenticacao_servicos";
 
 export const metadata = {
   title: "Posts",
@@ -15,13 +16,14 @@ const dateTimeFormat = Intl.DateTimeFormat("pt-BR");
 export const revalidate = 10;
 
 export default async function Posts() {
+  const isSessaoValida = await sessaoValida();
   const posts = await listarPosts();
 
   return (
     <>
       <header className="container flex items-center justify-between w-full mt-7">
         <h1 className="text-white mb-0">Posts</h1>
-        <CriarPostModal />
+        {isSessaoValida && <CriarPostModal />}
       </header>
 
       <section className="container w-full mt-7">

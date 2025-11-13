@@ -2,6 +2,7 @@
 
 import {PrismaClient} from "@prisma/client";
 import {z} from "zod";
+import { sessaoValida } from "@/app/(autenticacao)/_servicos/autenticacao_servicos";
 
 const prisma = new PrismaClient();
 
@@ -51,6 +52,14 @@ export async function listarPosts() {
 }
 
 export async function criarPost(payload) {
+  const isSessaoValida = await sessaoValida();
+
+  if (!isSessaoValida) {
+    return {
+      erros: ["Ação não autorizada. Precisa estar logado para interagir."],
+    };
+  }
+
   const validador = z.object({
     slug: z.string({required_error: "Slug é um campo obrigatório"}),
     titulo: z.string({required_error: "Título é um campo obrigatório"}),
@@ -84,7 +93,15 @@ export async function criarPost(payload) {
   return {data: post};
 }
 
-export async function atualizarPosts(payload) {
+export async function atualizarPost(payload) {
+  const isSessaoValida = await sessaoValida();
+
+  if (!isSessaoValida) {
+    return {
+      erros: ["Ação não autorizada"],
+    };
+  }
+
   const validador = z.object({
     id: z.string({required_error: "ID é um campo obrigatório"}),
     slug: z.string({required_error: "Slug é um campo obrigatório"}),
@@ -129,6 +146,14 @@ export async function atualizarPosts(payload) {
 }
 
 export async function excluirPost(id) {
+  const isSessaoValida = await sessaoValida();
+
+  if (!isSessaoValida) {
+    return {
+      erros: ["Ação não autorizada"],
+    };
+  }
+
   const validador = z.string({required_error: "ID é um campo obrigatório"});
 
   const camposValidados = validador.safeParse(id);
