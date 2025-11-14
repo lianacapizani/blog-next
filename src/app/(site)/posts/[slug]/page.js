@@ -1,5 +1,7 @@
 import Markdown from "react-markdown";
 import { retornarPostPorSlug, listarPosts } from "../_servicos/posts-servicos";
+import Comentarios from "../../_componentes/comentarios";
+
 
 const dateTimeFormat = Intl.DateTimeFormat("pt-BR");
 
@@ -80,6 +82,9 @@ export default async function PostDetail(context) {
       <article className="container w-full mt-7 mb-10 prose prose-invert text-zinc-300">
         <Markdown>{post.conteudo}</Markdown>
       </article>
+
+      <Comentarios postId={post.id} />
+
     </div>
   );
 }
